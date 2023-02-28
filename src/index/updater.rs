@@ -309,8 +309,8 @@ impl Updater {
           let txs = match try_join_all(futs).await {
             Ok(txs) => txs,
             Err(e) => {
-              log::error!("Couldn't receive txs {e}");
-              return;
+              log::error!("Something wrong here Couldn't receive txs {e}");
+              //return; //Waheed
             }
           };
           // Send all tx output values back in order
