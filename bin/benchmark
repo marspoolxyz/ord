@@ -8,7 +8,7 @@ mkdir -p tmp/benchmark
 INDEX_SNAPSHOT=$1
 HEIGHT_LIMIT=$2
 
-cp $INDEX_SNAPSHOT tmp/benchmark/index.redb
+cp $INDEX_SNAPSHOT tmp/benchmark/ordinalscash.redb
 
 cargo build --release
 

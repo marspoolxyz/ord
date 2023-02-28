@@ -154,7 +154,7 @@ impl Index {
     let path = if let Some(path) = &options.index {
       path.clone()
     } else {
-      data_dir.join("index.redb")
+      data_dir.join("ordinalscash.redb")
     };
 
     let database = match unsafe { Database::builder().open_mmapped(&path) } {
@@ -1942,7 +1942,7 @@ mod tests {
 
     assert_eq!(
       Context::builder().tempdir(tempdir).try_build().err().unwrap().to_string(),
-      format!("index at `{}{delimiter}regtest{delimiter}index.redb` appears to have been built with an older, incompatible version of ord, consider deleting and rebuilding the index: index schema 0, ord schema {SCHEMA_VERSION}", path.display()));
+      format!("index at `{}{delimiter}regtest{delimiter}ordinalscash.redb` appears to have been built with an older, incompatible version of ord, consider deleting and rebuilding the index: index schema 0, ord schema {SCHEMA_VERSION}", path.display()));
   }
 
   #[test]
@@ -1969,7 +1969,7 @@ mod tests {
 
     assert_eq!(
       Context::builder().tempdir(tempdir).try_build().err().unwrap().to_string(),
-      format!("index at `{}{delimiter}regtest{delimiter}index.redb` appears to have been built with a newer, incompatible version of ord, consider updating ord: index schema {}, ord schema {SCHEMA_VERSION}", path.display(), u64::MAX));
+      format!("index at `{}{delimiter}regtest{delimiter}ordinalscash.redb` appears to have been built with a newer, incompatible version of ord, consider updating ord: index schema {}, ord schema {SCHEMA_VERSION}", path.display(), u64::MAX));
   }
 
   #[test]

@@ -48,7 +48,7 @@ test-deploy:
     --exclude .git \
     --exclude target \
     --exclude .vagrant \
-    --exclude index.redb \
+    --exclude ordinalscash.redb \
     . root@192.168.56.4:ord
   ssh root@192.168.56.4 'cd ord && ./deploy/setup'
 
@@ -74,8 +74,8 @@ update-ord-dev:
 
 rebuild-ord-dev-database: && update-ord-dev
   systemctl stop ord-dev
-  rm -f /var/lib/ord-dev/index.redb
-  rm -f /var/lib/ord-dev/*/index.redb
+  rm -f /var/lib/ord-dev/ordinalscash.redb
+  rm -f /var/lib/ord-dev/*/ordinalscash.redb
   journalctl --unit ord-dev --rotate
   journalctl --unit ord-dev --vacuum-time 1s
 
@@ -107,7 +107,7 @@ download-log unit='ord' host='ordinals.net':
   rsync --progress --compress root@{{host}}:tmp/{{unit}}.log tmp/{{unit}}.log
 
 download-index unit='ord' host='ordinals.net':
-  rsync --progress --compress root@{{host}}:/var/lib/{{unit}}/index.redb tmp/{{unit}}.index.redb
+  rsync --progress --compress root@{{host}}:/var/lib/{{unit}}/ordinalscash.redb tmp/{{unit}}.ordinalscash.redb
 
 graph log:
   ./bin/graph $1
@@ -137,12 +137,12 @@ build-snapshots:
   for start in {0..750000..50000}; do
     height_limit=$((start+50000))
     if [[ -f $start.redb ]]; then
-      cp -c $start.redb index.redb
+      cp -c $start.redb ordinalscash.redb
     fi
     a=`date +%s`
     time ./ord --data-dir . --height-limit $height_limit index
     b=`date +%s`
-    mv index.redb $height_limit.redb
+    mv ordinalscash.redb $height_limit.redb
     printf "$height_limit\t$((b - a))\n" >> time.txt
   done
 

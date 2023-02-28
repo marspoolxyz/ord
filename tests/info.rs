@@ -70,7 +70,7 @@ fn transactions() {
 
   let tempdir = TempDir::new().unwrap();
 
-  let index_path = tempdir.path().join("index.redb");
+  let index_path = tempdir.path().join("ordinalscash.redb");
 
   assert!(CommandBuilder::new(format!(
     "--index {} info --transactions",
