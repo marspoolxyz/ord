@@ -310,7 +310,7 @@ impl Updater {
             Ok(txs) => txs,
             Err(e) => {
               log::error!("Something wrong here Couldn't receive txs {e}");
-              //return; //Waheed
+              return; //Waheed
             }
           };
           // Send all tx output values back in order
