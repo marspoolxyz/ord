@@ -11,7 +11,7 @@ use {
   std::{iter::Peekable, str},
 };
 
-const PROTOCOL_ID: &[u8] = b"icp";
+const PROTOCOL_ID: &[u8] = b"ord";
 
 const BODY_TAG: &[u8] = &[];
 const CONTENT_TYPE_TAG: &[u8] = &[1];
@@ -325,13 +325,13 @@ mod tests {
   fn duplicate_field() {
     assert_eq!(
       InscriptionParser::parse(&envelope(&[
-        b"icp",
+        b"ord",
         &[1],
         b"text/plain;charset=utf-8",
         &[1],
         b"text/plain;charset=utf-8",
         &[],
-        b"icp",
+        b"ord",
       ])),
       Err(InscriptionError::InvalidInscription),
     );
@@ -341,11 +341,11 @@ mod tests {
   fn valid() {
     assert_eq!(
       InscriptionParser::parse(&envelope(&[
-        b"icp",
+        b"ord",
         &[1],
         b"text/plain;charset=utf-8",
         &[],
-        b"icp",
+        b"ord",
       ])),
       Ok(inscription("text/plain;charset=utf-8", "ord")),
     );
@@ -355,13 +355,13 @@ mod tests {
   fn valid_with_unknown_tag() {
     assert_eq!(
       InscriptionParser::parse(&envelope(&[
-        b"icp",
+        b"ord",
         &[1],
         b"text/plain;charset=utf-8",
         &[3],
         b"bar",
         &[],
-        b"icp",
+        b"ord",
       ])),
       Ok(inscription("text/plain;charset=utf-8", "ord")),
     );
@@ -370,7 +370,7 @@ mod tests {
   #[test]
   fn no_content_tag() {
     assert_eq!(
-      InscriptionParser::parse(&envelope(&[b"icp", &[1], b"text/plain;charset=utf-8"])),
+      InscriptionParser::parse(&envelope(&[b"ord", &[1], b"text/plain;charset=utf-8"])),
       Ok(Inscription {
         content_type: Some(b"text/plain;charset=utf-8".to_vec()),
         body: None,
@@ -381,7 +381,7 @@ mod tests {
   #[test]
   fn no_content_type() {
     assert_eq!(
-      InscriptionParser::parse(&envelope(&[b"icp", &[], b"foo"])),
+      InscriptionParser::parse(&envelope(&[b"ord", &[], b"foo"])),
       Ok(Inscription {
         content_type: None,
         body: Some(b"foo".to_vec()),
@@ -393,7 +393,7 @@ mod tests {
   fn valid_body_in_multiple_pushes() {
     assert_eq!(
       InscriptionParser::parse(&envelope(&[
-        b"icp",
+        b"ord",
         &[1],
         b"text/plain;charset=utf-8",
         &[],
@@ -407,7 +407,7 @@ mod tests {
   #[test]
   fn valid_body_in_zero_pushes() {
     assert_eq!(
-      InscriptionParser::parse(&envelope(&[b"icp", &[1], b"text/plain;charset=utf-8", &[]])),
+      InscriptionParser::parse(&envelope(&[b"ord", &[1], b"text/plain;charset=utf-8", &[]])),
       Ok(inscription("text/plain;charset=utf-8", "")),
     );
   }
@@ -416,7 +416,7 @@ mod tests {
   fn valid_body_in_multiple_empty_pushes() {
     assert_eq!(
       InscriptionParser::parse(&envelope(&[
-        b"icp",
+        b"ord",
         &[1],
         b"text/plain;charset=utf-8",
         &[],
@@ -435,11 +435,11 @@ mod tests {
     let script = script::Builder::new()
       .push_opcode(opcodes::OP_FALSE)
       .push_opcode(opcodes::all::OP_IF)
-      .push_slice(b"icp")
+      .push_slice(b"ord")
       .push_slice(&[1])
       .push_slice(b"text/plain;charset=utf-8")
       .push_slice(&[])
-      .push_slice(b"icp")
+      .push_slice(b"ord")
       .push_opcode(opcodes::all::OP_ENDIF)
       .push_opcode(opcodes::all::OP_CHECKSIG)
       .into_script();
@@ -456,11 +456,11 @@ mod tests {
       .push_opcode(opcodes::all::OP_CHECKSIG)
       .push_opcode(opcodes::OP_FALSE)
       .push_opcode(opcodes::all::OP_IF)
-      .push_slice(b"icp")
+      .push_slice(b"ord")
       .push_slice(&[1])
       .push_slice(b"text/plain;charset=utf-8")
       .push_slice(&[])
-      .push_slice(b"icp")
+      .push_slice(b"ord")
       .push_opcode(opcodes::all::OP_ENDIF)
       .into_script();
 
@@ -475,7 +475,7 @@ mod tests {
     let script = script::Builder::new()
       .push_opcode(opcodes::OP_FALSE)
       .push_opcode(opcodes::all::OP_IF)
-      .push_slice(b"icp")
+      .push_slice(b"ord")
       .push_slice(&[1])
       .push_slice(b"text/plain;charset=utf-8")
       .push_slice(&[])
@@ -483,7 +483,7 @@ mod tests {
       .push_opcode(opcodes::all::OP_ENDIF)
       .push_opcode(opcodes::OP_FALSE)
       .push_opcode(opcodes::all::OP_IF)
-      .push_slice(b"icp")
+      .push_slice(b"ord")
       .push_slice(&[1])
       .push_slice(b"text/plain;charset=utf-8")
       .push_slice(&[])
@@ -501,7 +501,7 @@ mod tests {
   fn invalid_utf8_does_not_render_inscription_invalid() {
     assert_eq!(
       InscriptionParser::parse(&envelope(&[
-        b"icp",
+        b"ord",
         &[1],
         b"text/plain;charset=utf-8",
         &[],
@@ -564,7 +564,7 @@ mod tests {
         previous_output: OutPoint::null(),
         script_sig: Script::new(),
         sequence: Sequence(0),
-        witness: envelope(&[b"icp", &[1], b"text/plain;charset=utf-8", &[], b"icp"]),
+        witness: envelope(&[b"ord", &[1], b"text/plain;charset=utf-8", &[], b"ord"]),
       }],
       output: Vec::new(),
     };
@@ -629,7 +629,7 @@ mod tests {
   #[test]
   fn inscribe_png() {
     assert_eq!(
-      InscriptionParser::parse(&envelope(&[b"icp", &[1], b"image/png", &[], &[1; 100]])),
+      InscriptionParser::parse(&envelope(&[b"ord", &[1], b"image/png", &[], &[1; 100]])),
       Ok(inscription("image/png", [1; 100])),
     );
   }
@@ -725,7 +725,7 @@ mod tests {
   #[test]
   fn unknown_odd_fields_are_ignored() {
     assert_eq!(
-      InscriptionParser::parse(&envelope(&[b"icp", &[3], &[0]])),
+      InscriptionParser::parse(&envelope(&[b"ord", &[3], &[0]])),
       Ok(Inscription {
         content_type: None,
         body: None,
@@ -736,7 +736,7 @@ mod tests {
   #[test]
   fn unknown_even_fields_are_invalid() {
     assert_eq!(
-      InscriptionParser::parse(&envelope(&[b"icp", &[2], &[0]])),
+      InscriptionParser::parse(&envelope(&[b"ord", &[2], &[0]])),
       Err(InscriptionError::UnrecognizedEvenField),
     );
   }
