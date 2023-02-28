@@ -65,11 +65,11 @@ test-bitcoincore-rpc = { path = "test-bitcoincore-rpc" }
 unindent = "0.2.1"
 
 [[bin]]
-name = "ordcash"
+name = "ord"
 path = "src/bin/main.rs"
 
 [lib]
-name = "ordcash"
+name = "ord"
 path = "src/lib.rs"
 
 [[test]]
