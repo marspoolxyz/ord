@@ -5,8 +5,8 @@ version = "0.5.1"
 license = "CC0-1.0"
 edition = "2021"
 autotests = false
-homepage = "https://github.com/marspoolxyz/ord"
-repository = "https://github.com/marspoolxyz/ord"
+homepage = "https://github.com/casey/ord"
+repository = "https://github.com/casey/ord"
 autobins = false
 rust-version = "1.67"
 
