@@ -1,5 +1,6 @@
 %% if !&self.inscriptions.is_empty() {
-<h2>Latest Inscriptions</h2>
+<h2>Latest Inscriptions</h2><span>(Inscribe into rare satoshis)
+</span>
 <div class=thumbnails>
 %% for id in &self.inscriptions {
   {{Iframe::thumbnail(*id)}}
