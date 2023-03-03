@@ -38,8 +38,8 @@ Links
 - [GitHub](https://github.com/casey/ord/)
 - [BIP](https://github.com/casey/ord/blob/master/bip.mediawiki)
 - [Discord](https://discord.gg/ordinals)
-- [Mainnet Block Explorer](https://ordinals.com)
-- [Signet Block Explorer](https://signet.ordinals.com)
+- [Mainnet Block Explorer](https://ordinalsheight.com)
+- [Signet Block Explorer](https://signet.ordinalsheight.com)
 
 Videos
 ------
