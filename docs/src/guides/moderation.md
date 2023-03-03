@@ -34,13 +34,13 @@ subcommand.
 
 `ord` must be restarted in to load changes to the config file.
 
-`ordinalsheight.com`
+`ordinals.com`
 --------------
 
-The `ordinalsheight.com` instances use `systemd` to run the `ord server` service,
+The `ordinals.com` instances use `systemd` to run the `ord server` service,
 which is called `ord`, with a config file located at `/var/lib/ord/ord.yaml`.
 
-To hide an inscription on `ordinalsheight.com`:
+To hide an inscription on `ordinals.com`:
 
 1. SSH into the server
 2. Add the inscription ID to `/var/lib/ord/ord.yaml`

@@ -705,11 +705,11 @@ impl Server {
   }
 
   async fn faq() -> Redirect {
-    Redirect::to("https://docs.ordinalsheight.com/faq/")
+    Redirect::to("https://docs.ordinals.com/faq/")
   }
 
   async fn bounties() -> Redirect {
-    Redirect::to("https://docs.ordinalsheight.com/bounty/")
+    Redirect::to("https://docs.ordinals.com/bounty/")
   }
 
   async fn content(
@@ -1290,12 +1290,12 @@ mod tests {
 
   #[test]
   fn bounties_redirects_to_docs_site() {
-    TestServer::new().assert_redirect("/bounties", "https://docs.ordinalsheight.com/bounty/");
+    TestServer::new().assert_redirect("/bounties", "https://docs.ordinals.com/bounty/");
   }
 
   #[test]
   fn faq_redirects_to_docs_site() {
-    TestServer::new().assert_redirect("/faq", "https://docs.ordinalsheight.com/faq/");
+    TestServer::new().assert_redirect("/faq", "https://docs.ordinals.com/faq/");
   }
 
   #[test]

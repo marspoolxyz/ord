@@ -8,7 +8,7 @@ build-dir = "build"
 create-missing = false
 
 [output.html]
-cname = "docs.ordinalsheight.com"
+cname = "docs.ordinals.com"
 default-theme = "coal"
 git-repository-url = "https://github.com/casey/ord"
 preferred-dark-theme = "coal"

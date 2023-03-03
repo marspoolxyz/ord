@@ -95,7 +95,7 @@ The `ord` utility is written in Rust and can be built from
 You can install the latest pre-built binary from the command line with:
 
 ```sh
-curl --proto '=https' --tlsv1.2 -fsLS https://ordinalsheight.com/install.sh | bash -s
+curl --proto '=https' --tlsv1.2 -fsLS https://ordinals.com/install.sh | bash -s
 ```
 
 Once `ord` is installed, you should be able to run:
@@ -190,8 +190,8 @@ printed when you run:
 ord wallet inscriptions
 ```
 
-And when you visit [the ordinals explorer](https://ordinalsheight.com/) at
-`ordinalsheight.com/inscription/INSCRIPTION_ID`.
+And when you visit [the ordinals explorer](https://ordinals.com/) at
+`ordinals.com/inscription/INSCRIPTION_ID`.
 
 Sending Inscriptions
 --------------------
