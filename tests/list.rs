@@ -1,4 +1,4 @@
-use {super::*, ord::subcommand::list::Output};
+use {super::*, ordcash::subcommand::list::Output};
 
 #[test]
 fn output_found() {

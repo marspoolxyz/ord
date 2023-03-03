@@ -1,4 +1,4 @@
-use {super::*, ord::subcommand::info::TransactionsOutput};
+use {super::*, ordcash::subcommand::info::TransactionsOutput};
 
 #[test]
 fn json_with_satoshi_index() {

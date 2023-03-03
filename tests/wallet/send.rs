@@ -1,4 +1,4 @@
-use {super::*, ord::subcommand::wallet::send::Output};
+use {super::*, ordcash::subcommand::wallet::send::Output};
 
 #[test]
 fn inscriptions_can_be_sent() {

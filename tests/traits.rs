@@ -1,4 +1,4 @@
-use {super::*, ord::subcommand::traits::Output, ord::Rarity};
+use {super::*, ordcash::subcommand::traits::Output, ordcash::Rarity};
 
 #[test]
 fn traits_command_prints_sat_traits() {

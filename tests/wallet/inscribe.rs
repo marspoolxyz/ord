@@ -364,7 +364,7 @@ fn inscribe_to_specific_destination() {
 
   let destination = CommandBuilder::new("wallet receive")
     .rpc_server(&rpc_server)
-    .output::<ord::subcommand::wallet::receive::Output>()
+    .output::<ordcash::subcommand::wallet::receive::Output>()
     .address;
 
   let txid = CommandBuilder::new(format!(

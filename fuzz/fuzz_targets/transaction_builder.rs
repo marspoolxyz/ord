@@ -4,7 +4,7 @@ use {
   arbitrary::Arbitrary,
   bitcoin::{Amount, OutPoint},
   libfuzzer_sys::fuzz_target,
-  ord::{FeeRate, SatPoint, TransactionBuilder},
+  ordcash::{FeeRate, SatPoint, TransactionBuilder},
   std::collections::BTreeMap,
 };
 

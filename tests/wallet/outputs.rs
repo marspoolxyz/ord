@@ -1,4 +1,4 @@
-use {super::*, ord::subcommand::wallet::outputs::Output};
+use {super::*, ordcash::subcommand::wallet::outputs::Output};
 
 #[test]
 fn outputs() {

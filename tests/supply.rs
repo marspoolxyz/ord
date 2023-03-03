@@ -1,4 +1,4 @@
-use {super::*, ord::subcommand::supply::Output};
+use {super::*, ordcash::subcommand::supply::Output};
 
 #[test]
 fn genesis() {

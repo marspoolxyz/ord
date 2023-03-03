@@ -1,4 +1,4 @@
-use {super::*, ord::subcommand::find::Output};
+use {super::*, ordcash::subcommand::find::Output};
 
 #[test]
 fn find_command_returns_satpoint_for_sat() {
